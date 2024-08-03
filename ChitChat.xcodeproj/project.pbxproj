@@ -19,6 +19,8 @@
 		6ACEA8E32C5A800C005FF652 /* StreamChat in Frameworks */ = {isa = PBXBuildFile; productRef = 6ACEA8E22C5A800C005FF652 /* StreamChat */; };
 		6ACEA8E92C5A800C005FF652 /* StreamChatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6ACEA8E82C5A800C005FF652 /* StreamChatUI */; };
 		6ACEA8EC2C5A808A005FF652 /* StreamChatSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6ACEA8EB2C5A808A005FF652 /* StreamChatSwiftUI */; };
+		6AFC8EB22C5E6D2E001493F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC8EB12C5E6D2E001493F2 /* SettingsViewController.swift */; };
+		6AFC8EB42C5E6D4B001493F2 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFC8EB32C5E6D4B001493F2 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		6ACEA8CE2C5A7CCB005FF652 /* ChitChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChitChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACEA8D22C5A7CCB005FF652 /* ChitChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChitChatUITests.swift; sourceTree = "<group>"; };
 		6ACEA8D42C5A7CCB005FF652 /* ChitChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChitChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6AFC8EB12C5E6D2E001493F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6AFC8EB32C5E6D4B001493F2 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				6ACEA8B52C5A7CC9005FF652 /* LoginViewController.swift */,
+				6AFC8EB12C5E6D2E001493F2 /* SettingsViewController.swift */,
+				6AFC8EB32C5E6D4B001493F2 /* TabBarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -325,6 +331,8 @@
 				6ACEA8B62C5A7CC9005FF652 /* LoginViewController.swift in Sources */,
 				6ACEA8B22C5A7CC9005FF652 /* AppDelegate.swift in Sources */,
 				6ACEA8B42C5A7CC9005FF652 /* SceneDelegate.swift in Sources */,
+				6AFC8EB22C5E6D2E001493F2 /* SettingsViewController.swift in Sources */,
+				6AFC8EB42C5E6D4B001493F2 /* TabBarViewController.swift in Sources */,
 				6A4C1E6D2C5A8C40004970FD /* ChatManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

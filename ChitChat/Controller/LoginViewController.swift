@@ -51,13 +51,43 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func didTapContinue(){
+        guard let text = usernameField.text, !text.isEmpty else {
+            return
+        }
+        ChatManager.shared.signIn(with: text) {[weak self] success in
+            guard success else{
+                return
+            }
+            print("Did login ")
+            
+            //Take user to chat list
+            DispatchQueue.main.async {
+                self?.presentChatList()
+            }
+        }
+    }
+    
+    func presentChatList(animated: Bool = true){
+        print("Should show chat list")
         
+        guard let vc = ChatManager.shared.createChannelList() else {
+            return
+        }
+        let tabVC = TabBarViewController(chatList: vc)
+        tabVC.modalPresentationStyle = .fullScreen
+        present(tabVC, animated: animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         usernameField.becomeFirstResponder()
+        
+        if ChatManager.shared.isSignedIn {
+            presentChatList(animated: false)
+        }
     }
+    
+  
 
 
     private func addConstraits(){
