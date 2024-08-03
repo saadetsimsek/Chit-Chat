@@ -50,6 +50,22 @@ class LoginViewController: UIViewController {
                          for: .touchUpInside)
     }
     
+    func presentChatList(animated: Bool = true){
+        print("Should show chat list")
+        
+        guard let vc = ChatManager.shared.createChannelList() else {
+            return
+        }
+        
+        vc.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
+                                                               target: self,
+                                                               action: #selector(didTapCompose))
+        
+        let tabVC = TabBarViewController(chatList: vc)
+        tabVC.modalPresentationStyle = .fullScreen
+        present(tabVC, animated: animated)
+    }
+    
     @objc private func didTapContinue(){
         guard let text = usernameField.text, !text.isEmpty else {
             return
@@ -67,16 +83,24 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func presentChatList(animated: Bool = true){
-        print("Should show chat list")
-        
-        guard let vc = ChatManager.shared.createChannelList() else {
-            return
-        }
-        let tabVC = TabBarViewController(chatList: vc)
-        tabVC.modalPresentationStyle = .fullScreen
-        present(tabVC, animated: animated)
+    @objc private func didTapCompose(){
+        let alert = UIAlertController(title: "New Chat", 
+                                      message: "Enter channel name",
+                                      preferredStyle: .alert)
+        alert.addTextField()
+        alert.addAction(.init(title: "Cancel", style: .cancel))
+        alert.addAction(.init(title: "Create", style: .default, handler: { _ in
+            guard let text = alert.textFields?.first?.text, !text.isEmpty else{
+                return
+            }
+            DispatchQueue.main.async {
+                ChatManager.shared.createNewChannel(name: text)
+            }
+        }))
+        presentedViewController?.present(alert, animated: true)
     }
+    
+ 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

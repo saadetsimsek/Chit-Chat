@@ -45,9 +45,9 @@ final class ChatManager{
     }
     
     // MARK: - Authentication
-    func signOut() async{ // async eklendi await ile
-        await client.disconnect()
-        await client.logout()
+    func signOut() { // async eklendi await ile
+         client.disconnect()
+         client.logout()
     }
     
     var isSignedIn: Bool {
@@ -72,6 +72,20 @@ final class ChatManager{
     }
     
     public func createNewChannel(name: String) {
-        
+        guard let current = currentUser else {
+            return
+        }
+        let keys: [String] = tokens.keys.filter({ $0 != current }).map {$0}
+        do{
+            let result = try client.channelController(createChannelWithId: .init(type: .messaging, id: name),
+                                                      name: name,
+                                                      members: Set(keys),
+                                                      isCurrentUserMember: true
+            )
+            result.synchronize()
+        }
+        catch{
+            print("\(error)")
+        }
     }
 }
